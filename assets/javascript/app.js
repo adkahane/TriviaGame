@@ -9,6 +9,14 @@
       q5: ["Bananas are vegetables.", "f"]
     };
 
+    var choices = {
+      ch1: ["Adrian Brody", "Chris Hemsworth", "Paul Reubens", "Paul Newman"],
+      ch2: [],
+      ch3: [],
+      ch4: [],
+      ch5: []
+    };
+
     // We start the game with a score of 0.
     var correct = 0;
     var incorrect = 0;
@@ -40,7 +48,8 @@
     function finalStats() {
       $("#question").html = "<h1>All done, here's how you did!<h1><h3>Correct Answers: </h3>" + correct + "<h3>Incorrect Answers: </h3>" + incorrect + "<h3>unanswered: </h3>" + unanswered;
 
-      $("#choices").append = "<h3 class='ml-auto mr-auto'>Correct Answers: " + correct;
+      $("#choices").empty();
+      $("#start").show();
     }
 
 
