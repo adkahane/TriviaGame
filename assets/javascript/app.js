@@ -1,17 +1,17 @@
 // VARIABLES
     // ==========================================================================
     // The object questions for our quiz game.
-    var questions = {
-      q1: ["Which actor has been a vampire in Buffy?", "3"],
-      q2: ["There are 365 days in a year.", "t"],
-      q3: ["There are 42 ounces in a pound.", "f"],
-      q4: ["The Declaration of Independence was created in 1745.", "f"],
-      q5: ["Bananas are vegetables.", "f"]
-    };
+var questions = {
+  q1: ["Which actor has been a vampire in Buffy?", "3"],
+  q2: ["Where does the saying Five by Five come from?", "1"],
+  q3: ["What is the name of the 'evil buffy'?", "4"],
+  q4: ["What do the heroes call each season's top badguy?", "2"],
+  q5: ["Angel or Spike", "0"]
+};
 
     var choices = {
       ch1: ["Adrian Brody", "Chris Hemsworth", "Paul Reubens", "Paul Newman"],
-      ch2: [],
+      ch2: ["Radio Operators", "Architects", "Just made it up", "Sk8ter Doods"],
       ch3: [],
       ch4: [],
       ch5: []
@@ -62,6 +62,7 @@
 
     // When the user presses a key, it will run the following function...
     $("#start").on("click", function() {
+      $(this).hide();
 
       // If there are no more questions, stop the function.
       if (qIndex === questionsArray.length) {
