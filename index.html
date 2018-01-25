@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css"
 	<meta charset="UTF-8">
-	<title></title>
+	<title>Buffy Trivia Game</title>
 </head>
 <body>
-	
-	<div container>
-		<div row>
-			<div col-12>
-
+	<div class="container whole mt-5 text-center border bg-light">
+		<div class="row text-center">
+			<div class="col-12 my-5">
+				<h1>Header</h1>
 			</div>
 		</div>
-		<div row>
-			<div col>
+		<div class="container game">
+			<div class="row mb-3">
+				<div class="col text-right">
+					<h3>Time Remaining:</h3>
+				</div>
+				<div class="col text-left">
+					<h3 id="timer">30 seconds</h3>
+				</div>
 			</div>
-			<div col>
+			<div class="row">
+				<div id="question" class="col-12">
+					<h3>This is going to be a question?</h3>
+				</div>
 			</div>
-		</div>
-		<div row>
-			<div col-12>
-			</div>
-		</div>
-		<div row>
-			<div col-5 ml-auto mr-auto>
-				<div row>
+			<div class="row my-3">
+				<div class="col-5 ml-auto mr-auto border">
+					<div id="choices">
+						<h3 class="ml-auto mr-auto">choice 1</h3>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="row start">
+		<button id="start" class="button ml-auto mr-auto mt-5">
+			<p>START QUIZ</p>
+		</button>
+	</div>
 
-<script src="assets/javascript/app.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/javascript/app.js"></script>
 
 </body>
 </html>
