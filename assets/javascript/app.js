@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-  <meta charset="UTF-8">
-  <title>Question Game</title>
-</head>
-<body>
-
-  <h1>Question Game!</h1>
-
-  <p id="score">This is your question:<span id="putMeHere"></span></p>
-  <p id="question"></p>
-
-  <script>
-
-     // VARIABLES
+// VARIABLES
     // ==========================================================================
     // The object questions for our quiz game.
     var questions = {
