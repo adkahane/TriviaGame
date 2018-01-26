@@ -1,4 +1,6 @@
+
 // Objects of questions and their answer that corresponds to a data-value
+
 var questions = {
   q1: ["Which actor has been a vampire in Buffy?", "3"],
   q2: ["Where does the saying Five by Five come from?", "1"],
@@ -15,7 +17,8 @@ var choices = {
   ch5: ["Angel", "Spike"]
 };
 
-// Global Variables
+// GLOBAL VARIABLES
+
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
@@ -23,41 +26,55 @@ var qTimer;
 var count = 30;
 
 var qIndex = 0;
+var choicesArray = [choices.ch1, choices.ch2, choices.ch3, choices.ch4, choices.ch5];
 var questionsArray = [questions.q1, questions.q2, questions.q3, questions.q4, questions.q5];
-var imageArray = ["assets/images/paulRVampire.jpg", "assets/images/fivebyFive.jpg", "assets/images/faithPunch.gif", ""]
-console.log(questionsArray)
+var imageArray = ["assets/images/paulRVampire.jpg", "assets/images/fivebyFive.jpg", "assets/images/faithPunch.gif", ""];
+console.log(questionsArray);
 
 // FUNCTIONS
-// ==============================================================================
 
-// Renders questions.
+// Renders the current questions
 function renderQuestion() {
   count = 30;
   $("#question").text(questionsArray[qIndex][0]);
 }
 
+// Renders choices for the current question
 function renderChoices() {
-
+  $("#choices").empty();
+  for (var i = 0; i < choicesArray[qIndex].length; i++) {
+    var buttonChoice = $("<div>");
+    buttonChoice.addClass("choice-button border border-dark");
+    buttonChoice.attr("data-answervalue", i);
+    buttonChoice.text(choicesArray[qIndex][i]);
+    $("#choices").append(buttonChoice);
+    console.log(buttonChoice);
+  }
 }
 
+// Results screen between questions (lasts 3 seconds)
 function resultsScreen(ans) {
+  $("#choices").empty();
   if (ans === "correct") {
     correct++;
     $("#question").html("<h3>CORRECT!</h3>");
-
-
+    $("#choices").html("<img src='"+imageArray[i]+"'>");
   } 
   else if (ans === "incorrect") {
     incorrect++;
     $("#question").html("<h3>WRONG ANSWER!</h3>");
+    $("#choices").html("<img src='"+imageArray[i]+"'>");
   }
   else if (ans === "time") {
     unanswered++;
     $("#question").html("<h3>Out of time...</h3>");
+    $("#choices").html("<img src='assets/images/buffering.jpg'>");
   }
+  setTimeout(round, 1000 * 3);
+  qIndex++;
 }
 
-// Function that shows final stats
+// Final Stats Screen
 function gameOver() {
   $("#question").html("<h1>All done, here's how you did!<h1><h3>Correct Answers: </h3>" + correct + "<h3>Incorrect Answers: </h3>" + incorrect + "<h3>unanswered: </h3>" + unanswered);
 
@@ -65,11 +82,13 @@ function gameOver() {
   $("#start").show();
 }
 
+// The Countdown
 function countdown() {
   count--;
   $("#timer").text(count);
   if (count === 0) {
-    resultsScreen("time")
+    clearInterval(qTimer);
+    resultsScreen("time");
   }
 
 }
@@ -80,7 +99,9 @@ function round() {
   }
   else {
     renderQuestion();
+    renderChoices();
     qTimer = setInterval(countdown, 1000);
+  }
 }
 
 
@@ -90,32 +111,7 @@ $(".game").hide();
 $("#start").on("click", function() {
   $(this).hide();
   $(".game").show();
-  
   round();
+  
 
-
-//----------------------------------------------------------------------------
-
-
-  // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
-  var userInput = $("#question").data('name', 'value');
-
-  // Only run this code if "t" or "f" were pressed.
-  if (userInput === "t" || userInput === "f") {
-
-    // If they guess the correct answer, increase and update score, alert them they got it right.
-    if (userInput === questionsArray[qIndex][1]) {
-      alert("Correct!");
-      score++;
-      updateScore();
-    }
-    // If wrong, alert them they are wrong.
-    else {
-      wrongPage();
-    }
-
-    // Increment the questionIndex variable and call the renderQuestion function.
-    qIndex++;
-    renderQuestion();
-  }
 });
