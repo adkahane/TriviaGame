@@ -1,3 +1,26 @@
 body {
 	background-image: url("../images/buffyBackground.jpg");
+	background-size: 100%;
+}
+
+.whole {
+	background-color: rgba(211, 211, 211, 0.7);
+	margin-top: 150px;
+	margin-bottom: 20px;
+}
+
+.choice-button:hover {
+	background-color: red;
+}
+
+.choice-button {
+	padding: 30px 0;
+	margin: 10px 0;
+	font-weight: bold;
+	background-color: #777;
+}
+
+.images {
+	height: 450px;
+	width: 450px;
 }
